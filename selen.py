@@ -43,8 +43,9 @@ class PythonOrgSearch():
                 #print (ii.id)
                 a = ids[idx]
                 a.click()
-                time.sleep(1)
+                time.sleep(2)
                 driver.execute_script("window.history.go(-1)")
+                time.sleep(2)
                 ids = driver.find_elements_by_xpath( '//*[@id="main"]/div/div[3]/div[2]/div/div[2]/div/div/div[3]/div[2]/div/span')
                 idx +=1
                 # print (ii.get_attribute('id'))    # id name as string
