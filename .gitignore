@@ -1,0 +1,5 @@
+out.json
+geckodriver.log
+bash.exe.stackdump
+.vscode/settings.json
+.vscode/launch.json
