@@ -31,16 +31,22 @@ class PythonOrgSearch():
             Filter.click()
             Filter.send_keys("Virtual Server")
             Filter.send_keys(Keys.ENTER)
+            driver.find_element_by_xpath('//*[@id="main"]/div/div[3]/div[1]/div[1]/div/div[1]/ul/li[26]/div[1]').click()
+            driver.find_element_by_xpath('//*[@id="main"]/div/div[3]/div[1]/div[1]/div/div[1]/ul/li[26]/div[2]/div[2]/div').click()
             WebDriverWait(self.driver, self.delay).until(EC.presence_of_element_located((By.XPATH,'//*[@id="main"]/div/div[3]/div[1]/div[1]/div/div[1]/div/div/div/span[1]'))).click()
-            time.sleep(10)
+            time.sleep(2)
             #ids = WebDriverWait(self.driver, self.delay).until(EC.presence_of_element_located((By.XPATH,'//*[@id="main"]/div/div[3]/div[2]/div/div[2]/div/div/div[3]/div[2]/div/span')))
             ids = driver.find_elements_by_xpath( '//*[@id="main"]/div/div[3]/div[2]/div/div[2]/div/div/div[3]/div[2]/div/span')
             print (ids)
-            for ii in ids:
-                print (ii.id)
-
-                ii.click()
+            idx=0
+            while idx < len(ids):
+                #print (ii.id)
+                a = ids[idx]
+                a.click()
+                time.sleep(1)
                 driver.execute_script("window.history.go(-1)")
+                ids = driver.find_elements_by_xpath( '//*[@id="main"]/div/div[3]/div[2]/div/div[2]/div/div/div[3]/div[2]/div/span')
+                idx +=1
                 # print (ii.get_attribute('id'))    # id name as string
         except TimeoutException:
             print ("Loading took too much time!")
